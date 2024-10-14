@@ -1,35 +1,44 @@
-# Task 1
-from Cython.Compiler.Errors import error_stack
-from Cython.Compiler.Nodes import TryExceptStatNode
-from mesonbuild.mlog import exception
+# Task 1 var 3
+from unicodedata import digit
 
-first_str = input('First string: ')
-second_str = input('Second string: ')
-
-def shifting(string):
-    string = f"{string[1]}{string[2:]}{string[0]}"
-    return string
-
-def shift(string):
-    shift_list = [shifting(string)]
-
-    for i in range(len(string)-1):
-        shift_list.append(shifting(shift_list[i]))
-    set(shift_list)
-
-    while first_str in shift_list:
-        shift_list = shift_list.remove(first_str)
-
-    return shift_list
-
-    # try:
-    #     return shift_list.remove(first_str)
-    #
-    # except ValueError:
-    #     return shift_list
-
-print(shift(first_str))
-print(sum([1 if second_str in _ else 0 for _ in shift(first_str)]))
-
+# first_str = input('First string: ')
+# second_str = input('Second string: ')
+#
+# def shifting(string_a: str, string_b: str):
+#     shift_b = [string_b[i:] + string_b[:i] for i in range(len(string_b))]
+#     cnt = 0
+#     for shift in shift_b:
+#         pos = 0
+#         while pos != -1:
+#             pos = string_a.find(shift, pos)
+#             if pos != -1:
+#                 cnt += 1
+#                 pos += len(shift)
+#
+#     return cnt
+#
+#
+# print(shifting(first_str, second_str))7
 # ----------------------------------------------------------------------------------------
 # Task 2
+
+input_str = input('Input start string: ')
+
+def unpack(str_):
+    unpacked = ''
+    int_ = ''
+
+    for i in enumerate(str_):
+        if i[1].isdigit():
+            int_ += i[1]
+        else:
+            try:
+                unpacked += i[1] * int(int_)
+            except ValueError:
+                unpacked += i[1]
+            int_ = ''
+
+    return unpacked
+
+
+print(unpack(input_str))
