@@ -1,0 +1,27 @@
+[
+  {
+    "username": "user1",
+    "last_login_time": "21:00",
+    "login_duration": "107"
+  },
+  {
+    "username": "user2",
+    "last_login_time": "20:00",
+    "login_duration": "17"
+  },
+  {
+    "username": "user3",
+    "last_login_time": "19:31",
+    "login_duration": "7"
+  },
+  {
+    "username": "user4",
+    "last_login_time": "18:18",
+    "login_duration": "1"
+  },
+  {
+    "username": "user5",
+    "last_login_time": "00:00",
+    "login_duration": "157"
+  }
+]
