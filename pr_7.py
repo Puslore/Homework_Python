@@ -5,32 +5,31 @@ import re
 from Cython.Compiler.Parsing import print_parse_tree
 
 with open('roles.txt', 'r') as file:
-    roles = [f'{file.readline()[:-1]}:' for _ in range(5)]
+    roles = [f'{file.readline()[:-1]}:' for _ in range(26)]
     roles.pop(0)
     db = {_: [] for _ in roles}
     reg = r'^[А-ЯЁа-яё ]*:'
-    # print(db)
+    print(db)
     file.readline()
     cnt = 1
 
-    while True:
-        # file.readline()
-        try:
-            line = file.readline().strip('\n')
-            if line == '': break
-            name = ''.join(re.findall(reg, line))
-            # print(name)
-            # print(line)
-            # print(db[name])
-            db[name].append(f'{cnt}) {line.strip(name)}')
-            # db[name].append(line)
-            # db[name] += line.strip(name).strip('\n')
-            # print(db[name])
-            # print(line.strip(name))
-            cnt += 1
+    #         db[name].append(f'{cnt}) {line.strip(name)}')
 
-        except:
-            pass
+    while True:
+        line = file.readline().strip('\n')
+        if line == '': break
+        name = ''.join(re.findall(reg, line))
+        phrase = ''
+
+        if name in line:
+            phrase += f'{cnt}) {line.strip(name)}'
+            continue
+
+        elif name not in line:
+            phrase += line
+
+        cnt += 1
+
 
 for i in db.items():
     print(i[0])
