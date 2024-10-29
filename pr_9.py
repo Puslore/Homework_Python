@@ -3,7 +3,7 @@ import os
 import requests
 
 # paste token from forlabs
-WEATHER_TOKEN = "299147b63c1c74d4df3eaea5fd7cfc3a"
+WEATHER_TOKEN = ""
 
 def get_weather():
     try:
