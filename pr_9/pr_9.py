@@ -4,8 +4,8 @@ import requests
 import telebot
 
 
-BOT_TOKEN = '5639979585:AAF-IDS7WoVAZ2jm-aLoUs4ZbazHMWERy9A'
-WEATHER_TOKEN = '299147b63c1c74d4df3eaea5fd7cfc3a'
+BOT_TOKEN = ''
+WEATHER_TOKEN = ''
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
