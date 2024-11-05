@@ -7,7 +7,7 @@ def make_buffer_list(number, role, phrase):
     mbl = [number, role, phrase.strip(role)]
     return mbl
 
-with open('./pr_7/roles.txt', 'r', encoding='utf-8') as file:
+with open('./roles.txt', 'r', encoding='utf-8') as file:
     # creating roles list
     a = "\n"
     roles = [f'{file.readline().strip(a)}:' for _ in range(26)]
