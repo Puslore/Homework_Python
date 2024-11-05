@@ -7,8 +7,12 @@ from datetime import datetime
 import pytz
 
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-WEATHER_TOKEN = os.getenv("WEATHER_TOKEN")
+# Paste tokens from Forlabs
+WEATHER_TOKEN = ''
+BOT_TOKEN = ''
+
+# BOT_TOKEN = os.getenv("BOT_TOKEN")
+# WEATHER_TOKEN = os.getenv("WEATHER_TOKEN")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
