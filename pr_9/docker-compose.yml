@@ -1,7 +1,10 @@
 services:
   tg-bot:
-    image: python:3.11
-    command: python3 main.py
+    build:  .
+    image: tg-bot:latest
+    container_name: tg-bot-weather
+    env_file:
+      - .env
     environment:
       - WEATHER_TOKEN=${WEATHER_TOKEN}
       - BOT_TOKEN=${BOT_TOKEN}
