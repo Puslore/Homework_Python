@@ -8,11 +8,11 @@ import pytz
 
 
 # Paste tokens from Forlabs
-WEATHER_TOKEN = ''
-BOT_TOKEN = ''
+
 
 # BOT_TOKEN = os.getenv("BOT_TOKEN")
 # WEATHER_TOKEN = os.getenv("WEATHER_TOKEN")
+# NASA_TOKEN = os.getenv("NASA_TOKEN")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -50,18 +50,27 @@ def logging(user, message):
         file.write(f'{user} : {message}  {time}\n')
 
 
+def answer_for_not_a_text(user):
+    bot.send_message(f'{user}, я не могу понять, о чем идет речь.')
+
+
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id,f'Привет, {message.chat.first_name}! Напиши название города, в котором хочешь узнать погоду.')
 
 
-@bot.message_handler(content_types=['text'])
+@bot.message_handler(func=lambda message: message.text is not None)
 def send_weather(message):
     city = message.text.strip()
     user = message.chat.first_name
     weather = get_weather(city, user)
     bot.send_message(message.chat.id, weather)
-    logging(user, city)
+
+
+@bot.message_handler(func=lambda message: message.text is None)
+def non_text(message):
+    user = message.chat.first_name
+    bot.send_message(f'{user}, я не могу понять, о чем идет речь.')
 
 
 bot.infinity_polling()
