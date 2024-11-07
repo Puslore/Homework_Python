@@ -2,7 +2,6 @@
 
 import requests
 import telebot
-from Cython.Compiler.Errors import message
 from telebot import types
 import os
 from datetime import datetime
