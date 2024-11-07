@@ -8,4 +8,5 @@ services:
     environment:
       - WEATHER_TOKEN=${WEATHER_TOKEN}
       - BOT_TOKEN=${BOT_TOKEN}
+      - NASA_TOKEN=${NASA_TOKEN}
     restart: always
