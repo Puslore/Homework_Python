@@ -9,13 +9,13 @@ import pytz
 
 
 # Paste tokens from Forlabs
-WEATHER_TOKEN = ''
-BOT_TOKEN = ''
-NASA_TOKEN = ''
+# WEATHER_TOKEN = ''
+# BOT_TOKEN = ''
+# NASA_TOKEN = ''
 
-# BOT_TOKEN = os.getenv("BOT_TOKEN")
-# WEATHER_TOKEN = os.getenv("WEATHER_TOKEN")
-# NASA_TOKEN = os.getenv("NASA_TOKEN")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+WEATHER_TOKEN = os.getenv("WEATHER_TOKEN")
+NASA_TOKEN = os.getenv("NASA_TOKEN")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -93,9 +93,11 @@ def send_nasa_photo(message):
         req = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={NASA_TOKEN}")
         data = req.json()
         photo_url = data['url']
+        explanation = data['explanation']
 
         if photo_url.endswith(('jpg', 'png')):
             bot.send_photo(message.chat.id, photo_url)
+            bot.send_message(message.chat.id, explanation)
         else:
             bot.send_message(message.chat.id, 'Сегодня в NASA только ссылка на фотографию, а не само фото :(. Попробуйте завтра! {photo_url}')
 
