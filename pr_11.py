@@ -1,6 +1,5 @@
 import math
 import getpass
-from os.path import split
 
 
 class Math:
@@ -14,8 +13,13 @@ class Math:
         return math.sqrt(self.cX ** 2 + self.cY ** 2)
 
     def coeff_k(self):
-        return (math.degrees(math.atan(abs(self.cY / self.cX))) + 90) if self.cX < 0 else \
-            math.degrees(math.atan(abs(self.cY / self.cX)))
+        try:
+            return (math.degrees(math.atan(abs(self.cY / self.cX))) + 90) if self.cX < 0 else \
+                math.degrees(math.atan(abs(self.cY / self.cX)))
+
+        except ZeroDivisionError:
+            return 270 if self.cX == 0 else \
+                90
 
     def vector_summ(self, second_vector):
         return [self.cX + second_vector.cX, self.cY + second_vector.cY]
@@ -25,15 +29,6 @@ class Math:
 
     def vector_power(self, second_vector):
         return [self.cX * second_vector.cX, self.cY * second_vector.cY]
-
-
-# operation_dict = {
-#     1: 'vector_length',
-#     2: 'coeff_k',
-#     3: 'vector_summ',
-#     4: 'vector_subtraction',
-#     5: 'vector_power'
-# }
 
 
 def intro_text():
@@ -69,7 +64,6 @@ def input_vector_cords(operation_num):
             input_ = map(int, input().split())
             vector = Math(*input_)
 
-
             print(vector.vector_length()) if operation_num == 1 else \
                 print(vector.coeff_k())
 
@@ -87,7 +81,7 @@ def input_vector_cords(operation_num):
                 print(vector1.vector_power(vector2))
 
 
-    except Exception:
+    except ValueError:
         print('Please check your input. You must insert only numbers with spaces')
         input_vector_cords(operation_num)
 
