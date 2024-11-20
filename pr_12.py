@@ -245,7 +245,7 @@ class FoodInfo:
 
 
 def check_input(list_):
-    return True if all(True if isinstance(_, int) or isinstance(_, float) else False for  _ in list_) else False
+    return True if all(True if isinstance(_, int) or isinstance(_, float) else False for  _ in list_) and 0 not in list_ else False
 
 
 banana = FoodInfo(2, 20, 300)
