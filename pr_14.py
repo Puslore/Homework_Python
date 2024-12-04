@@ -73,8 +73,7 @@ class Father:
     def __init__(self, mood='neutral'):
         self.mood = mood
 
-    @staticmethod
-    def greet():
+    def greet(self):
         return 'Hello!'
 
     def be_strict(self):
@@ -85,8 +84,7 @@ class Mother:
     def __init__(self, mood='neutral'):
         self.mood = mood
 
-    @staticmethod
-    def greet():
+    def greet(self):
         return 'Hi, Honey!'
 
     def be_kind(self):
@@ -94,20 +92,17 @@ class Mother:
 
 
 class Daughter(Mother, Father):
-    @staticmethod
-    def greet():
-        return 'Hi, Honey!'
+    pass
 
 
 class Son(Father, Mother):
-    @staticmethod
-    def greet():
-        return 'Hello!'
+    pass
 
-print(Mother.greet())
-print(Father.greet())
-print(Daughter.greet())
-print(Son.greet())
+
+print(Mother().greet())
+print(Father().greet())
+print(Daughter().greet())
+print(Son().greet())
 
 
 
