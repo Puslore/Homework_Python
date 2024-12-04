@@ -104,6 +104,11 @@ class Son(Father, Mother):
     def greet():
         return 'Hello!'
 
+print(Mother.greet())
+print(Father.greet())
+print(Daughter.greet())
+print(Son.greet())
+
 
 
 # ---------------------------------------------------------------------------------------
