@@ -63,7 +63,8 @@ class BirthInfo:
         return (datetime.now(tz=pytz.timezone('Asia/Irkutsk')).date() - self.birth_time.date()) / 365
 
 
-print(BirthInfo(datetime(2023, 12, 11)).age())
+print(BirthInfo(datetime(2023, 09, 22)).age())
+# can work incorrect. I don't know how to fix that. There's troubles with datetime module
 
 # a = datetime.now(tz=pytz.timezone('Asia/Irkutsk')).date()
 # print(a)
