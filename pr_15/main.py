@@ -72,6 +72,7 @@ def leap_year(year):
     return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
 
 
+
 # тут тест задания из дз
 # print(BirthInfo(datetime(2004, 2, 29)).age())
 # print(BirthInfo(datetime(2004, 2, 29)).days_until_birthday())
